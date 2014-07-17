@@ -1,7 +1,11 @@
-from bs4 import BeautifulSoup
+from __future__ import unicode_literals
+import sys
+import codecs
 import urllib2
 import re
+from bs4 import BeautifulSoup
 
+# sys.stdout = codecs.getwriter('utf8')(sys.stdout)
 opener = urllib2.build_opener()
 opener.addheaders = [
         ('User-agent', ('Mozilla/4.0 (compatible; MSIE 6.0; '
@@ -14,8 +18,11 @@ rym_soup = BeautifulSoup(rym_source)
 artists = []
 albums = []
 
-# for result in rym_soup.find_all("a", "artist"):
-# 	print result.string
-# print rym_soup.title.string
+for result in rym_soup.find_all("a", "artist"):
+	artists.append(result.string)
 for result in rym_soup.find_all("a", "album"):
-	print result.string
+	albums.append(result.string)
+
+# print artists
+probablywrong = zip(artists, albums)
+print probablywrong
