@@ -1,3 +1,10 @@
+'''
+This particular module is going to be "deprecated", as its development has hit
+a standstill and also because I'd like to focus on the other aspects of this 
+project. 
+I may return to it later.
+'''
+
 from __future__ import unicode_literals
 import sys
 import codecs
